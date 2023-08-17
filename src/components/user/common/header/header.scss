@@ -1,0 +1,55 @@
+@use "../../../../assets/scss/variables" as var;
+@use "../../../../assets/scss/mixins" as mix;
+
+.header {
+  @include mix.flexBox($align-items: stretch);
+  background-color: var.$color4;
+  .logo {
+    background-color: var.$color1;
+  }
+  .menus {
+    @include mix.flexBox(column, center, stretch);
+    padding-left: 1rem;
+    flex: 1;
+    .topbar {
+      @include mix.flexBox(row, space-between, center);
+      border-bottom: 1px dotted var.$color3;
+      flex: 1;
+      font-size: 0.8rem;
+      ul {
+        @include mix.flexBox($gap: 1rem);
+        @include mix.resetList();
+        flex: 1;
+        a {
+          @include mix.flexBox($align-items: center, $gap: 0.5rem);
+          color: var.$color1;
+          text-decoration: none;
+          &:hover {
+            color: var.$color2;
+          }
+        }
+        &.contact-bar {
+          flex: 2;
+          justify-content: flex-start;
+        }
+        &.social-bar {
+          flex: 1;
+          justify-content: flex-end;
+          padding-right: 1rem;
+          font-size: 1rem;
+        }
+      }
+    }
+    .menubar {
+      flex: 1;
+      a {
+        @include mix.flexBox($align-items: center, $gap: 0.5rem);
+        color: var.$color1;
+        text-decoration: none;
+        &:hover {
+          color: var.$color2;
+        }
+      }
+    }
+  }
+}

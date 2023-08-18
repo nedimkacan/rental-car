@@ -1,40 +1,49 @@
-@use "../../../../assets/scss/variables" as var;
-@use "../../../../assets/scss/mixins" as mix;
+@use "../../../../assets/scss/variables" as v;
+@use "../../../../assets/scss/mixins" as m;
+
+$breakpoint: 992px;
 
 .header {
-  @include mix.flexBox($align-items: stretch);
-  background-color: var.$color4;
+  @include m.flexBox($align-items: stretch);
+  background-color: v.$color4;
+  @media (max-width: $breakpoint) {
+    @include m.flexBox(column, space-between, stretch);
+    position: relative;
+  }
   .logo {
-    background-color: var.$color1;
+    background-color: v.$color1;
   }
   .menus {
-    @include mix.flexBox(column, center, stretch);
-    padding-left: 1rem;
+    @include m.flexBox(column, center, stretch);
     flex: 1;
+    padding-left: 1rem;
     .topbar {
-      @include mix.flexBox(row, space-between, center);
-      border-bottom: 1px dotted var.$color3;
+      @include m.flexBox(row, space-between, center, 1rem);
+      border-bottom: 1px dotted v.$color3;
       flex: 1;
-      font-size: 0.8rem;
+
+      @media (max-width: $breakpoint) {
+        border-bottom: 0;
+        padding: 1rem;
+      }
       ul {
-        @include mix.flexBox($gap: 1rem);
-        @include mix.resetList();
-        flex: 1;
+        @include m.resetList();
+
         a {
-          @include mix.flexBox($align-items: center, $gap: 0.5rem);
-          color: var.$color1;
+          @include m.flexBox($align-items: center, $gap: 0.5rem);
           text-decoration: none;
-          &:hover {
-            color: var.$color2;
-          }
         }
         &.contact-bar {
+          @include m.flexBox($gap: 1rem);
           flex: 2;
-          justify-content: flex-start;
+          font-size: 0.8rem;
+          a {
+            color: v.$color3;
+          }
         }
         &.social-bar {
+          @include m.flexBox($justify-content: flex-end, $gap: 1rem);
           flex: 1;
-          justify-content: flex-end;
           padding-right: 1rem;
           font-size: 1rem;
         }
@@ -42,13 +51,25 @@
     }
     .menubar {
       flex: 1;
-      a {
-        @include mix.flexBox($align-items: center, $gap: 0.5rem);
-        color: var.$color1;
-        text-decoration: none;
-        &:hover {
-          color: var.$color2;
+      @media (max-width: $breakpoint) {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        .container {
+          justify-content: flex-end;
         }
+        .navbar-collapse {
+          background-color: v.$color4;
+          padding: 1rem;
+          margin-top: 3rem;
+        }
+      }
+      a {
+        @include m.flexBox($align-items: center, $gap: 0.5rem);
+      }
+      .navbar-toggler {
+        background-color: v.$color2;
       }
     }
   }

@@ -1,20 +1,17 @@
 import React from 'react'
-import { Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import settings from '../../../../helpers/settings'
-import logo from '../../../../assets/img/logo/logo.png'
-import Topbar from './topbar'
-import Menubar from './menubar'
-import './header.scss'
+import { Container } from 'react-bootstrap';
+import logo from "../../../../assets/img/logo/logo.png";
+import settings from '../../../../helpers/settings';
+import Menubar from './menubar';
+import Topbar from './topbar';
+import "./header.scss";
 
 const Header = () => {
   return (
-    <Container>
-      <div className='header'>
+    <Container className="p-0 fixed-top">
+      <div className="header">
         <div className="logo">
-          <Link to={"/"}>
-            <img src={logo} alt={settings.siteName} className='img-fluid' />
-          </Link>
+          <img src={logo} alt={settings.siteName} className="img-fluid" />
         </div>
         <div className="menus">
           <Topbar />
